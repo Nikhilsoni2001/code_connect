@@ -18,6 +18,9 @@ import ProfileForm from './components/profile-forms/ProfileForm';
 import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
 import Profile from './components/profile/Profile';
+import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
+import NotFound from './components/layout/NotFound';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -80,6 +83,23 @@ const App = () => {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="/posts"
+              element={
+                <PrivateRoute>
+                  <Posts />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/posts/:id"
+              element={
+                <PrivateRoute>
+                  <Post />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
         </Fragment>
       </Router>
